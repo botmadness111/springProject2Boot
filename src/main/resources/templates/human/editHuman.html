@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditHuman</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/human/edit/{id}(id=${human.getId()})}" th:object="${human}">
+
+    <label for="fio">Enter Surname Name Patronymic: </label>
+    <input type="text" id="fio" th:field="${human.fio}" th:value="${human.getFio()}"/>
+    <div style="color: red" th:if="${#fields.hasErrors('fio')}" th:errros="${human.fio}">Some error text</div>
+    <br/>
+    <label for="year_of_birth">Enter year of birth: </label>
+    <input type="text" id="year_of_birth" th:field="${human.year_of_birth}" th:value="${human.getFio()}"/>
+    <div style="color: red" th:if="${#fields.hasErrors('year_of_birth')}" th:errros="${human.year_of_birth}">Some error text</div>
+
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

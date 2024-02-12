@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Human</title>
+</head>
+<body>
+
+<div th:object="${human}" th:text="${human.getFio() + ', ' + human.getYear_of_birth()}"></div>
+<hr/>
+<div th:if="${human.books.isEmpty()}">
+    <p th:text="${'No have books'}"></p>
+</div>
+<hr/>
+<p th:if="${!human.books.isEmpty()}">Books:</p>
+<div th:if="${!human.books.isEmpty()}" th:each="book:${human.getBooks()}">
+    <p th:if="${book.getOverdue()}" style="color: red" th:text="${book.name + ' ' + book.yearOfRelease}"></p>
+    <p th:if="!${book.getOverdue()}" th:text="${book.name + ' ' + book.yearOfRelease}"></p>
+</div>
+<hr/>
+</body>
+</html>
